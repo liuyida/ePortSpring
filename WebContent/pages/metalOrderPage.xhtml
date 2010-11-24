@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="metalOrderForm">
+            <h:panelGrid columns="4" id="toolBar">
+                <h:commandButton id="billBtn" value="计费"></h:commandButton>
+                <h:commandButton id="saveBtn" value="保存"></h:commandButton>
+                <h:commandButton id="printRelBtn" value="打印业务联系函"></h:commandButton>
+                <h:commandButton id="printInvoiceBtn" value="开发票"></h:commandButton>
+            </h:panelGrid>
+            <h:panelGrid columns="8">
+                <h:outputLabel value="业务号" for="orderId"/><h:inputText value="#{metalOrderPage.orderInfo.bno}" id="orderId"></h:inputText>            
+                <h:outputLabel value="报检号" for="declNO"/><h:inputText value="#{metalOrderPage.orderInfo.declNo}" id="declNO" />
+                <h:outputLabel value="货主" for="consignor"/><h:inputText value="#{metalOrderPage.orderInfo.consignor}" id="consignor"/>
+                <h:outputLabel value="受理日期" for="acceptDate"/><h:inputText value="#{metalOrderPage.orderInfo.acceptDate}" id="acceptDate"/>
+                <h:outputLabel value="货值（美元）" for="valueUS"/><h:inputText value="#{metalOrderPage.orderInfo.valueUS}" id="valueUS"/>
+                <h:outputLabel value="货值（元）" for="valueRMB"/><h:inputText value="#{metalOrderPage.orderInfo.valueRMB}" id="valueRMB"/>
+                <h:outputLabel value="代理单位" for="declUnit"/><h:inputText value="#{metalOrderPage.orderInfo.declUnit}" id="declUnit"/>
+                <h:outputLabel value="贸易地区" for="tradeRegions"/><h:inputText value="#{metalOrderPage.orderInfo.tradeRegions}" id="tradeRegions"/>
+                <h:outputLabel value="经停口岸" for="stopsPort"/><h:inputText value="#{metalOrderPage.orderInfo.stopsPort}" id="stopsPort"/>
+                <h:outputLabel value="存放地点" for="placeName"/><h:inputText value="#{metalOrderPage.orderInfo.placeName}" id="placeName"/>
+                <h:outputLabel value="报检属性" for="declAttr"/><h:inputText value="#{metalOrderPage.orderInfo.declAttr}" id="declAttr"/>
+                <h:outputLabel value="货物名称" for="goodsName"/><h:inputText value="#{metalOrderPage.orderInfo.goodsName}" id="goodsName"/>
+            </h:panelGrid>
+        </h:form>   
+    </h:body>
+</html>
+

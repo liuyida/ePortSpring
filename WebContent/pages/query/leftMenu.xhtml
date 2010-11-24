@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid >
+                <h:outputLabel value="业务号" for="orderId"/><h:inputText value="" id="orderId"></h:inputText>            
+                <h:outputLabel value="报检号" for="declNO"/><h:inputText value="" id="declNO" />
+                <h:outputLabel value="发票号" for="declNO"/><h:inputText value="" id="invoiceNO" />
+                <h:outputLabel value="货主" for="consignor"/><h:inputText value="" id="consignor"/>
+                <h:outputLabel value="受理日期(起始)" for="acceptDate"/><h:inputText value="" id="startDate"/>
+                <h:outputLabel value="受理日期(截止)" for="acceptDate"/><h:inputText value="" id="endDate"/>
+                <h:panelGroup>
+                    <h:commandButton value="查询"/>
+                    <h:commandButton value="重置"/>
+                </h:panelGroup>
+            </h:panelGrid>
+        </h:form>   
+    </h:body>
+</html>
+
