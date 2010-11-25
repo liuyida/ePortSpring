@@ -25,7 +25,7 @@ public class IndexPage extends Page {
 
     public String switchToMetalOrder() {
         System.out.print("metalOrder");
-        return "metalOrder";
+        return "metalOrderPage";
     }
 
     @Override

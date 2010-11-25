@@ -19,6 +19,12 @@
 			<url>http://download.java.net/maven/2/</url>
 			<layout>default</layout>
 		</repository>
+		<repository>
+			<id>oracleReleases</id>
+			<name>Oracle Released Java Packages</name>
+			<url>http://www.ibiblio.org/maven/</url>
+			<layout>default</layout>
+		</repository>
 	</repositories>
 	<dependencies>
 		<dependency>
@@ -40,6 +46,11 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
+		</dependency>	
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc14</artifactId>
+			<version>10.2.0.4.0</version>
 		</dependency>
 	</dependencies>
 </project>

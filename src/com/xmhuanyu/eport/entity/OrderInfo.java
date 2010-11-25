@@ -5,8 +5,8 @@ import java.util.Date;
 
 /**
  * @category 业务基本信息息
- * @author Huanyu
- *
+ * @author Huanyu  
+ * @
  */
 public class OrderInfo {
 
