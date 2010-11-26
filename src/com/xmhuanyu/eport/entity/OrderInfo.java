@@ -1,6 +1,6 @@
 package com.xmhuanyu.eport.entity;
 
-import java.math.BigDecimal;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -8,22 +8,24 @@ import java.util.Date;
  * @author Huanyu  
  * @
  */
-public class OrderInfo {
+public class OrderInfo implements Serializable{
 
-    private String bno;
+	private static final long serialVersionUID = 1L;
+	private String bno;
     private String declNo;
     private Date acceptDate;//受理日期
     private Date acceptTime;//受理时间
     private String consignor;//货主
     private String declUnit;//报检单位
     private String goodsName;//货物名称
-    private BigDecimal valueRMB;//货值人民币
-    private BigDecimal valueUS;//货值美元
-    private BigDecimal exchangeRate;//汇率
+    private double valueRMB;//货值人民币
+    private double valueUS;//货值美元
+    private double exchangeRate;//汇率
     private String tradeRegions;//贸易地区
     private String stopsPort;//经停口岸
     private String placeName;//货物停放地点
     private String declAttr;//报检属性 T-法检，F-非法检，C-现场查验，W-客户委托，O-其他
+    private double cash;//应收金额
 
     public Date getAcceptDate() {
         return acceptDate;
@@ -73,27 +75,27 @@ public class OrderInfo {
         this.declUnit = declUnit;
     }
 
-    public BigDecimal getExchangeRate() {
+    public double getExchangeRate() {
         return exchangeRate;
     }
 
-    public void setExchangeRate(BigDecimal exchangeRate) {
+    public void setExchangeRate(double exchangeRate) {
         this.exchangeRate = exchangeRate;
     }
 
-    public BigDecimal getValueRMB() {
+    public double getValueRMB() {
         return valueRMB;
     }
 
-    public void setValueRMB(BigDecimal valueRMB) {
+    public void setValueRMB(double valueRMB) {
         this.valueRMB = valueRMB;
     }
 
-    public BigDecimal getValueUS() {
+    public double getValueUS() {
         return valueUS;
     }
 
-    public void setValueUS(BigDecimal valueUS) {
+    public void setValueUS(double valueUS) {
         this.valueUS = valueUS;
     }
 
@@ -136,6 +138,13 @@ public class OrderInfo {
     public void setGoodsName(String goodsName) {
         this.goodsName = goodsName;
     }
-    
+
+	public double getCash() {
+		return cash;
+	}
+
+	public void setCash(double d) {
+		this.cash = d;
+	}   
     
 }

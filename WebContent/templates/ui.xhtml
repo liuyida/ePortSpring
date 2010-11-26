@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+<f:view contentType="text/html">
+	<h:head>
+		<title><ui:insert name="title">口岸检疫处理业务管理系统</ui:insert></title>
+		<meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
+		<link type="text/css" rel="stylesheet"
+			href="#{request.contextPath}/resources/themes/redmond/skin.css" />
+        <p:resources/>
+		<ui:insert name="head"></ui:insert>
+	</h:head>
+	<h:body>
+		<p:layout fullPage="true">
+			<p:layoutUnit position="top" height="75">
+				<h:outputText value="口岸检疫处理业务管理系统" />
+			</p:layoutUnit>
+			<p:layoutUnit position="bottom" height="75">
+				<h:outputText value="South unit content." />
+			</p:layoutUnit>
+			<p:layoutUnit position="left" width="250" header="菜单栏"
+				resizable="true" closable="true" collapsible="true">
+				<h:form>
+					<p:accordionPanel activeIndex="0" autoHeight="false">
+						<p:tab title="业务受理">
+							<p:tree value="#{menuTreeBean.root}" var="node">							
+								<p:treeNode>
+									<h:outputLink value="#{node.url}" >#{node.name}</h:outputLink>
+								</p:treeNode>
+							</p:tree>
+						</p:tab>
+						<p:tab title="财务管理">
+							<p:tree value="#{menuTreeBean.root}"  var="node">
+								<p:treeNode>
+									<h:outputLink value="#{node.name}" ></h:outputLink>
+								</p:treeNode>
+							</p:tree>
+						</p:tab>
+						<p:tab title="业务管理">
+							<p:menu>
+								<p:submenu>
+									<p:menuitem value="卫生处理业务受理" />
+									<p:menuitem value="卫生处理业务受理" />
+								</p:submenu>
+							</p:menu>
+						</p:tab>
+						<p:tab title="统计分析">
+							<p:menu>
+								<p:submenu>
+									<p:menuitem value="卫生处理业务受理" />
+									<p:menuitem value="卫生处理业务受理" />
+								</p:submenu>
+							</p:menu>
+						</p:tab>
+						<p:tab title="基础数据">
+							<p:menu>
+								<p:submenu>
+									<p:menuitem value="卫生处理业务受理" />
+									<p:menuitem value="卫生处理业务受理" />
+								</p:submenu>
+							</p:menu>
+						</p:tab>
+						<p:tab title="系统管理">
+							<p:menu>
+								<p:submenu>
+									<p:menuitem value="卫生处理业务受理" />
+									<p:menuitem value="卫生处理业务受理" />
+								</p:submenu>
+							</p:menu>
+						</p:tab>
+					</p:accordionPanel>
+				</h:form>
+			</p:layoutUnit>
+			<p:layoutUnit position="center">
+				<div id="content" class="ui-widget">
+				<div class="post"><ui:insert name="content">...</ui:insert></div>
+				</div>
+			</p:layoutUnit>
+		</p:layout>
+	</h:body>
+</f:view>
+</html>

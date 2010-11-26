@@ -4,37 +4,44 @@
  */
 package com.xmhuanyu.eport.page;
 
-import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+
+import com.xmhuanyu.eport.page.Services.IndexPageServices;
+import com.xmhuanyu.eport.third.DB.CIQ.DeclInfo;
 
 /**
- *
+ * @category 业务受理页面
  * @author Huanyu
  */
-@ManagedBean(name = "indexPage")
+
 public class IndexPage extends Page {
 
-    private String declNO;
+	private String declNO;
 
-    public String getDeclNO() {
-        return declNO;
-    }
+	public String getDeclNO() {
+		return declNO;
+	}
 
-    public void setDeclNO(String declNO) {
-        this.declNO = declNO;
-    }
+	public void setDeclNO(String declNO) {
+		this.declNO = declNO;
+	}
 
-    public String switchToMetalOrder() {
-        System.out.print("metalOrder");
-        return "metalOrderPage";
-    }
+	public String switchToMetalOrder() {
+		IndexPageServices services=new IndexPageServices();
+		//DeclInfo declInfo= services.getDeclInfoByDeclNO(declNO);
+		DeclInfo declInfo=new DeclInfo();
+		declInfo.setDeclNO("12345");
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("declInfo", declInfo); 
+		return "metalOrderPage";
+	}
 
-    @Override
-    public String acculateFee() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+	@Override
+	public String acculateFee() {
+		throw new UnsupportedOperationException("Not supported yet.");
+	}
 
-    @Override
-    public String saveOrder() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+	@Override
+	public String saveOrder() {
+		throw new UnsupportedOperationException("Not supported yet.");
+	}
 }

@@ -4,25 +4,34 @@
  */
 package com.xmhuanyu.eport.page;
 
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.xmhuanyu.eport.entity.OrderInfo;
-import javax.faces.bean.ManagedBean;
+import com.xmhuanyu.eport.third.DB.CIQ.DeclInfo;
 
 /**
  * 
  * @author Huanyu
  */
-@ManagedBean(name="metalOrderPage")
+
 public class MetalOrderPage extends Page {
+	private final Logger logger = LoggerFactory.getLogger(MetalOrderPage.class);
 
     public MetalOrderPage() {
         super();
-        orderInfo=new OrderInfo();
-        orderInfo.setBno("190932");        
+        DeclInfo declInfo=(DeclInfo) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("declInfo");
+        orderInfo=new OrderInfo();        
+        orderInfo.setBno(declInfo.getDeclNO());        
        
     }
     private OrderInfo orderInfo;
 
     public OrderInfo getOrderInfo() {
+    	if(orderInfo==null) orderInfo=new OrderInfo();
         return orderInfo;
     }
 
@@ -38,6 +47,13 @@ public class MetalOrderPage extends Page {
     @Override
     public String saveOrder() {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+    
+    public void calculateFee(ActionEvent ae){
+    	logger.info("计算旧航材检疫处理费用");
+    	if(orderInfo.getValueRMB()==0.00)
+    		orderInfo.setValueRMB(orderInfo.getValueUS()*2);
+    	orderInfo.setCash(orderInfo.getValueUS()*0.2);
     }
     
 }

@@ -18,11 +18,11 @@ public class DeclInfo implements Serializable {
 	private String carrierNO;
 	private String transportTools;
 	private String goodPlace;
-        private int cnt20;
-        private int cnt40;
-        private String goodsName;
-        private String cnt20Str;
-        private String cnt40Str;
+	private int cnt20;
+	private int cnt40;
+	private String goodsName;
+	private String cnt20Str;
+	private String cnt40Str;
 
 	public String getCarrierNO() {
 		return carrierNO;
@@ -88,44 +88,44 @@ public class DeclInfo implements Serializable {
 		this.transportTools = transportTools;
 	}
 
-    public int getCnt20() {
-        return cnt20;
-    }
+	public int getCnt20() {
+		return cnt20;
+	}
 
-    public void setCnt20(int cnt20) {
-        this.cnt20 = cnt20;
-    }
+	public void setCnt20(int cnt20) {
+		this.cnt20 = cnt20;
+	}
 
-    public String getCnt20Str() {
-        return cnt20Str;
-    }
+	public String getCnt20Str() {
+		return cnt20Str;
+	}
 
-    public void setCnt20Str(String cnt20Str) {
-        this.cnt20Str = cnt20Str;
-    }
+	public void setCnt20Str(String cnt20Str) {
+		this.cnt20Str = cnt20Str;
+	}
 
-    public int getCnt40() {
-        return cnt40;
-    }
+	public int getCnt40() {
+		return cnt40;
+	}
 
-    public void setCnt40(int cnt40) {
-        this.cnt40 = cnt40;
-    }
+	public void setCnt40(int cnt40) {
+		this.cnt40 = cnt40;
+	}
 
-    public String getCnt40Str() {
-        return cnt40Str;
-    }
+	public String getCnt40Str() {
+		return cnt40Str;
+	}
 
-    public void setCnt40Str(String cnt40Str) {
-        this.cnt40Str = cnt40Str;
-    }
+	public void setCnt40Str(String cnt40Str) {
+		this.cnt40Str = cnt40Str;
+	}
 
-    public String getGoodsName() {
-        return goodsName;
-    }
+	public String getGoodsName() {
+		return goodsName;
+	}
 
-    public void setGoodsName(String goodsName) {
-        this.goodsName = goodsName;
-    }      
+	public void setGoodsName(String goodsName) {
+		this.goodsName = goodsName;
+	}
 
 }
