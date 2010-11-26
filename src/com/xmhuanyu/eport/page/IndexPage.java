@@ -6,7 +6,6 @@ package com.xmhuanyu.eport.page;
 
 import javax.faces.context.FacesContext;
 
-import com.xmhuanyu.eport.page.Services.IndexPageServices;
 import com.xmhuanyu.eport.third.DB.CIQ.DeclInfo;
 
 /**
@@ -27,7 +26,7 @@ public class IndexPage extends Page {
 	}
 
 	public String switchToMetalOrder() {
-		IndexPageServices services=new IndexPageServices();
+		//IndexPageServices services=new IndexPageServices();
 		//DeclInfo declInfo= services.getDeclInfoByDeclNO(declNO);
 		DeclInfo declInfo=new DeclInfo();
 		declInfo.setDeclNO("12345");
