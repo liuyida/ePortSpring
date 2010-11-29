@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.faces.event.ActionEvent;
+
 import org.primefaces.model.LazyDataModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,6 +35,7 @@ public class BankRatePage {
 		};
 		// 设置最大数据记录
 		lazyModel.setRowCount(1000);
+		selectBankRate=new BankRate();
 	}
 
 	/**
@@ -58,6 +61,14 @@ public class BankRatePage {
 
 	public void setSelectBankRate(BankRate selectBankRate) {
 		this.selectBankRate = selectBankRate;
+	}
+	
+	public void addRate(ActionEvent ae){
+		// TODO  添加汇率数据
+		logger.info("添加汇率数据！");
+		List<BankRate> lazyBankRates = new ArrayList<BankRate>();
+		populateBankRate(lazyBankRates, 20, 30);
+		lazyModel.setWrappedData(lazyBankRates);
 	}
 
 }

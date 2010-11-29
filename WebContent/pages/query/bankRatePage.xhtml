@@ -5,12 +5,36 @@
 	xmlns:p="http://primefaces.prime.com.tr/ui"
 	template="/templates/ui.xhtml">
 	<ui:define name="content">
-		<h:form>
-			<p:dataTable var="bankRate" value="#{bankRatePage.lazyModel}"
-				paginator="true" rows="10" lazy="true"
+		<h:outputScript name="jsf.js" library="javax.faces" />
+		<p:commandButton value="添加汇率" onclick="addRateDlg.show();"
+			type="button" />
+		<p:dialog id="rateDlg" widgetVar="addRateDlg" header="添加汇率">
+			<h:form id="addRateFrm">
+				<h:panelGrid>
+					<h:outputText for="date" value="日期" />
+					<p:calendar id="date" value="#{bankRatePage.selectBankRate.date}"
+						showButtonPanel="true" />
+					<h:outputText for="rate" value="汇率" />
+					<h:inputText id="rate" value="#{bankRatePage.selectBankRate.rate}">
+						<f:convertNumber maxFractionDigits="3" maxIntegerDigits="1"
+							groupingUsed="true" type="currency" />
+					</h:inputText>
+					<f:facet name="footer">
+						<p:commandButton value="添加" update=":rateTable"							
+							actionListener="#{bankRatePage.addRate}" />
+					</f:facet>
+				</h:panelGrid>
+			</h:form>
+		</p:dialog>
+
+		<h:form id="listFrm">
+			<p:dataTable widgetVar="rateTable" id="rateTable" var="bankRate"
+				value="#{bankRatePage.lazyModel}" paginator="true" rows="10"
+				lazy="true"
 				paginatorTemplate="{RowPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-				rowsPerPageTemplate="5,10,15" selection="#{bankRatePage.selectBankRate}"
-				selectionMode="single" onRowSelectComplete="bankRateDialog.show()"
+				rowsPerPageTemplate="5,10,15"
+				selection="#{bankRatePage.selectBankRate}" selectionMode="single"
+				onRowSelectComplete="bankRateDialog.show()"
 				onRowSelectUpdate="display">
 				<f:facet name="header">显示银行汇率数据</f:facet>
 				<p:column headerText="Date">
@@ -21,13 +45,14 @@
 				</p:column>
 			</p:dataTable>
 			<p:dialog widgetVar="bankRateDialog" header="BankRateDetail"
-				resizable="false" width="200" showEffect="explode" hideEffect="explode">
+				resizable="false" width="200" showEffect="explode"
+				hideEffect="explode">
 				<h:panelGrid id="display" columns="2" cellpadding="4">
-				<h:outputText value="Date"/>
-				<h:outputText value="#{bankRatePage.selectBankRate.date}"/>
-				<h:outputText value="Date"/>
-				<h:outputText value="#{bankRatePage.selectBankRate.rate}"/>
-				</h:panelGrid>				
+					<h:outputText value="Date" />
+					<h:outputText value="#{bankRatePage.selectBankRate.date}" />
+					<h:outputText value="Date" />
+					<h:outputText value="#{bankRatePage.selectBankRate.rate}" />
+				</h:panelGrid>
 			</p:dialog>
 		</h:form>
 	</ui:define>

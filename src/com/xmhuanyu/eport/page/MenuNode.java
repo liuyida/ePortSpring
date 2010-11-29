@@ -8,7 +8,7 @@ public class MenuNode implements Serializable{
 	private String name;
 	private String url;
 	public String getName() {
-		return name;
+		return name; 
 	}
 	public void setName(String name) {
 		this.name = name;

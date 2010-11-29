@@ -7,6 +7,7 @@ import org.primefaces.model.DefaultTreeNode;
 
 public class MenuTreeBean implements Serializable {
 	
+	
 	/**
 	 * 
 	 */

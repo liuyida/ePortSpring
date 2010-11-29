@@ -13,12 +13,17 @@
 	<managed-bean>
 		<managed-bean-name>metalOrderPage</managed-bean-name>
 		<managed-bean-class>com.xmhuanyu.eport.page.MetalOrderPage</managed-bean-class>
-		<managed-bean-scope>request</managed-bean-scope>
+		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
 		<managed-bean-name>menuTreeBean</managed-bean-name>
 		<managed-bean-class>com.xmhuanyu.eport.page.MenuTreeBean</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>bankRatePage</managed-bean-name>
+		<managed-bean-class>com.xmhuanyu.eport.page.BankRatePage</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	<navigation-rule>
 		<display-name>pages/index.xhtml</display-name>
