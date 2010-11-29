@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2010-11-28 13:54:19 by Hibernate Tools 3.4.0.Beta1 -->
+<hibernate-mapping>
+    <class name="com.xmhuanyu.eport.entity.BankRate" table="BANKRATE">
+        <id name="seqno" type="java.lang.Integer">
+            <column name="SEQNO" />
+            <generator class="assigned" />
+        </id>
+        <property name="rateDate" type="java.util.Date">
+            <column name="RATEDATE" />
+        </property>
+        <property name="rate" type="double">
+            <column name="RATE" />
+        </property>
+    </class>
+</hibernate-mapping>

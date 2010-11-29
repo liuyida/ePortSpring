@@ -32,16 +32,19 @@
 				<h:inputText value="#{metalOrderPage.orderInfo.consignor}"
 					id="consignor" />
 				<h:outputLabel value="受理日期" for="acceptDate" />
-				<h:inputText id="acceptDate" />
-				<h:outputLabel value="货值（美元）" for="valueUS" />
-				<h:inputText value="#{metalOrderPage.orderInfo.valueUS}"
-					id="valueUS" />
-				<h:outputLabel value="货值（元）" for="valueRMB" />
-				<h:inputText value="#{metalOrderPage.orderInfo.valueRMB}"
-					id="valueRMB" />
+				<h:inputText id="acceptDate" > 
+				<f:convertDateTime />
+				</h:inputText>
 				<h:outputLabel value="代理单位" for="declUnit" />
 				<h:inputText value="#{metalOrderPage.orderInfo.declUnit}"
 					id="declUnit" />
+				<h:outputLabel value="报检属性" for="declAttr" />
+				<h:inputText value="#{metalOrderPage.orderInfo.declAttr}"
+					id="declAttr" />
+				<h:outputLabel value="监管部门" for="managedDepart" />
+				<h:inputText id="managedDepart" />
+				<h:outputLabel value="业务部门" for="bizDepart" />
+				<h:inputText id="bizDepart" />
 				<h:outputLabel value="贸易地区" for="tradeRegions" />
 				<h:inputText value="#{metalOrderPage.orderInfo.tradeRegions}"
 					id="tradeRegions" />
@@ -51,16 +54,31 @@
 				<h:outputLabel value="存放地点" for="placeName" />
 				<h:inputText value="#{metalOrderPage.orderInfo.placeName}"
 					id="placeName" />
-				<h:outputLabel value="报检属性" for="declAttr" />
-				<h:inputText value="#{metalOrderPage.orderInfo.declAttr}"
-					id="declAttr" />
 				<h:outputLabel value="货物名称" for="goodsName" />
 				<h:inputText value="#{metalOrderPage.orderInfo.goodsName}"
 					id="goodsName" />
+				<h:outputLabel value="处理方式" for="treatMethod" />
+				<h:inputText id="treatMethod" />
+				<h:outputLabel value="货值（美元）" for="valueUS" />
+				<h:inputText value="#{metalOrderPage.orderInfo.valueUS}"
+					id="valueUS">
+					<f:convertNumber maxFractionDigits="2" groupingUsed="true"
+						maxIntegerDigits="7" type="number" />
+				</h:inputText>
+				<h:outputLabel value="货值（元）" for="valueRMB" />
+				<h:inputText value="#{metalOrderPage.orderInfo.valueRMB}"
+					id="valueRMB">
+					<f:convertNumber maxFractionDigits="2" groupingUsed="true"
+						currencySymbol="￥" maxIntegerDigits="7" type="currency" />
+				</h:inputText>
 				<h:outputLabel value="应收金额" for="cash" />
-				<h:inputText value="#{metalOrderPage.orderInfo.cash}" id="cash" />
+				<h:inputText value="#{metalOrderPage.orderInfo.cash}" id="cash">
+					<f:convertNumber maxFractionDigits="2" groupingUsed="true"
+						currencySymbol="￥" maxIntegerDigits="7" type="currency" />
+				</h:inputText>
+
 			</h:panelGrid>
-		</h:form>		
+		</h:form>
 	</ui:define>
 </ui:composition>
 
