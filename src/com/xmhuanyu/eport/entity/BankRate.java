@@ -1,16 +1,32 @@
+/**
+ * 
+ */
 package com.xmhuanyu.eport.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @category 银行汇率表 美元对人民币
- * @author EDA
+ * @category 银行汇率表
+ * @author Huanyu
  * 
  */
-public class BankRate {
+public class BankRate implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private Integer seqno;
-	private Date rateDate;
-	private double rate;
+	private Date date;
+	private double rate;	
+
+	public BankRate() {
+		super();
+	}
+
+	public BankRate(Date date, double rate) {
+		super();
+		this.date = date;
+		this.rate = rate;
+	}
 
 	public Integer getSeqno() {
 		return seqno;
@@ -20,12 +36,12 @@ public class BankRate {
 		this.seqno = seqno;
 	}
 
-	public Date getRateDate() {
-		return rateDate;
+	public Date getDate() {
+		return date;
 	}
 
-	public void setRateDate(Date rateDate) {
-		this.rateDate = rateDate;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	public double getRate() {

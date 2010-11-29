@@ -1,0 +1,34 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="/templates/ui.xhtml">
+	<ui:define name="content">
+		<h:form>
+			<p:dataTable var="bankRate" value="#{bankRatePage.lazyModel}"
+				paginator="true" rows="10" lazy="true"
+				paginatorTemplate="{RowPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+				rowsPerPageTemplate="5,10,15" selection="#{bankRatePage.selectBankRate}"
+				selectionMode="single" onRowSelectComplete="bankRateDialog.show()"
+				onRowSelectUpdate="display">
+				<f:facet name="header">显示银行汇率数据</f:facet>
+				<p:column headerText="Date">
+					<h:outputText value="#{bankRate.date}" />
+				</p:column>
+				<p:column headerText="Rate">
+					<h:outputText value="#{bankRate.rate}" />
+				</p:column>
+			</p:dataTable>
+			<p:dialog widgetVar="bankRateDialog" header="BankRateDetail"
+				resizable="false" width="200" showEffect="explode" hideEffect="explode">
+				<h:panelGrid id="display" columns="2" cellpadding="4">
+				<h:outputText value="Date"/>
+				<h:outputText value="#{bankRatePage.selectBankRate.date}"/>
+				<h:outputText value="Date"/>
+				<h:outputText value="#{bankRatePage.selectBankRate.rate}"/>
+				</h:panelGrid>				
+			</p:dialog>
+		</h:form>
+	</ui:define>
+</ui:composition>
