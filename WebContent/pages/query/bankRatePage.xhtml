@@ -5,56 +5,62 @@
 	xmlns:p="http://primefaces.prime.com.tr/ui"
 	template="/templates/ui.xhtml">
 	<ui:define name="content">
+		<h:outputScript name="jsf.js" library="javax.faces" />
+
 		<h:form id="listFrm">
-			<h:outputScript name="jsf.js" library="javax.faces" />
-			<p:commandButton value="添加汇率" onclick="addRateDlg.show();"
+			<p:commandButton value="添加汇率" onclick="rateDlg.show();"
 				type="button" />
-			<p:dialog id="rateDlg" widgetVar="addRateDlg" header="添加汇率">
-				<h:form id="addRateFrm">
-					<h:panelGrid>
-						<h:outputText for="date" value="日期" />
-						<p:calendar id="date" value="#{bankRatePage.selectBankRate.date}"
-							showButtonPanel="true" />
-						<h:outputText for="rate" value="汇率" />
-						<h:inputText id="rate" value="#{bankRatePage.selectBankRate.rate}">
-							<f:convertNumber maxFractionDigits="3" maxIntegerDigits="1"
-								groupingUsed="true" type="currency" />
-						</h:inputText>
-						<f:facet name="footer">
-							<p:commandButton value="添加" update=":rateTable"
-								actionListener="#{bankRatePage.addRate}" />
-						</f:facet>
-					</h:panelGrid>
-				</h:form>
+			<p:dialog id="rateDlg" widgetVar="rateDlg" header="添加汇率">
+				<h:panelGrid>
+					<h:outputText for="date" value="日期" />
+					<p:calendar id="date" showButtonPanel="true">
+						<f:convertDateTime pattern="yyyy-MM-dd" />
+					</p:calendar>
+					<h:outputText for="rate" value="汇率" />
+					<h:inputText id="rate" value="#{bankRatePage.bankRate.rate}">
+						<f:convertNumber maxFractionDigits="3" maxIntegerDigits="1"
+							groupingUsed="true" type="number" />
+					</h:inputText>
+					<f:facet name="footer">
+						<p:commandButton value="添加" oncomplete="handleAddBankRate(xhr, status, args)"
+							actionListener="#{bankRatePage.addRate}" update="rateTable" />
+					</f:facet>
+				</h:panelGrid>
 			</p:dialog>
-
-
 			<p:dataTable widgetVar="rateTable" id="rateTable" var="bankRate"
 				value="#{bankRatePage.lazyModel}" paginator="true" rows="10"
-				lazy="true"
+				lazy="true" style="width:450px;"
 				paginatorTemplate="{RowPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
 				rowsPerPageTemplate="5,10,15"
 				selection="#{bankRatePage.selectBankRate}" selectionMode="single"
 				onRowSelectComplete="bankRateDialog.show()"
 				onRowSelectUpdate="display">
 				<f:facet name="header">显示银行汇率数据</f:facet>
-				<p:column headerText="Date">
+				<p:column headerText="日期" style="width:250px;">
 					<h:outputText value="#{bankRate.date}" />
 				</p:column>
-				<p:column headerText="Rate">
+				<p:column headerText="汇率" style="width:100px;">
 					<h:outputText value="#{bankRate.rate}" />
+				</p:column>
+				<p:column headerText="编辑" style="width:100px;">
+					<h:outputText  />
 				</p:column>
 			</p:dataTable>
 			<p:dialog widgetVar="bankRateDialog" header="BankRateDetail"
 				resizable="false" width="200" showEffect="explode"
 				hideEffect="explode">
 				<h:panelGrid id="display" columns="2" cellpadding="4">
-					<h:outputText value="Date" />
+					<h:outputText value="日期" />
 					<h:outputText value="#{bankRatePage.selectBankRate.date}" />
-					<h:outputText value="Date" />
+					<h:outputText value="汇率" />
 					<h:outputText value="#{bankRatePage.selectBankRate.rate}" />
 				</h:panelGrid>
 			</p:dialog>
 		</h:form>
+				<script type="text/javascript">
+	      function handleAddBankRate(xhr, status, args) {		   
+			rateDlg.hide();				
+	        }
+     </script>
 	</ui:define>
 </ui:composition>

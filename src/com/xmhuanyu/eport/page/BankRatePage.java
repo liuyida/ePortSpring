@@ -17,6 +17,7 @@ public class BankRatePage {
 	private final Logger logger = LoggerFactory.getLogger(BankRatePage.class);
 	private LazyDataModel<BankRate> lazyModel;
 	private BankRate selectBankRate;
+	private BankRate bankRate;
 
 	@SuppressWarnings("serial")
 	public BankRatePage() {
@@ -35,7 +36,6 @@ public class BankRatePage {
 		};
 		// 设置最大数据记录
 		lazyModel.setRowCount(1000);
-		selectBankRate=new BankRate();
 	}
 
 	/**
@@ -63,12 +63,28 @@ public class BankRatePage {
 		this.selectBankRate = selectBankRate;
 	}
 	
+	
+	
+	public BankRate getBankRate() {
+		if(bankRate==null) bankRate=new BankRate();
+		return bankRate;
+	}
+
+	public void setBankRate(BankRate bankRate) {
+		this.bankRate = bankRate;
+	}
+
 	public void addRate(ActionEvent ae){
 		// TODO  添加汇率数据
 		logger.info("添加汇率数据！");
 		List<BankRate> lazyBankRates = new ArrayList<BankRate>();
 		populateBankRate(lazyBankRates, 20, 30);
 		lazyModel.setWrappedData(lazyBankRates);
+	}
+	
+	public void changeRate(ActionEvent ae){
+		// TODO  修改汇率数据
+		logger.info("修改汇率数据！");
 	}
 
 }

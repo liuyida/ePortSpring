@@ -10,5 +10,9 @@ public class BankRateServices {
 	public double getBankRateByDate(Date today){
 		return 0.00;
 	}
+	
+	public int getBankRate(){
+		return 0;
+	}
 
 }

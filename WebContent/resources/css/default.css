@@ -180,7 +180,9 @@ img.right {
 
 #menu {
 
-    width: 960px;
+    width: 280px;
+    
+    font-size:12px;
 
     margin: 0 auto;
 

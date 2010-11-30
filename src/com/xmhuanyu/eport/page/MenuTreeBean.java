@@ -24,7 +24,7 @@ public class MenuTreeBean implements Serializable {
 		TreeNode node0 = new DefaultTreeNode(nd1, root);
 		TreeNode node1 = new DefaultTreeNode(nd2, root);
 		TreeNode node2 = new DefaultTreeNode(nd3, root);
-		MenuNode  n1=new MenuNode("旧航材检疫处理业务","../pages/metalOrderPage.xhtml");
+		MenuNode  n1=new MenuNode("旧航材检疫处理业务","../metalOrderPage.xhtml");
 		MenuNode  n2=new MenuNode("n2","/faces/pages/metalOrderPage.xhtml");
 		TreeNode node00 = new DefaultTreeNode(n1, node0);
 		TreeNode node01 = new DefaultTreeNode(n2, node0);

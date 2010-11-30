@@ -16,12 +16,13 @@
 
 		<ui:insert name="head"></ui:insert>
 	</h:head>
-	<h:body>
+	<h:body style="font-size:12px;">
 		<p:layout fullPage="true">
-			<p:layoutUnit styleClass="ui-widget ui-widget-header" position="top" height="85">
-			    <div id="logo">
-			    <h1>口岸检疫处理业务管理系统</h1>
-			    </div>				
+			<p:layoutUnit styleClass="ui-widget ui-widget-header" position="top"
+				height="85">
+				<div id="logo">
+				<h1>口岸检疫处理业务管理系统</h1>
+				</div>
 			</p:layoutUnit>
 			<p:layoutUnit position="bottom" height="50">
 				<div align="center"><h:outputText value="厦门环宇卫生处理有限公司 版权所有" />
@@ -31,7 +32,8 @@
 			<p:layoutUnit position="left" width="250" header="菜单栏"
 				resizable="true" closable="true" collapsible="true">
 				<h:form>
-					<p:accordionPanel activeIndex="0" autoHeight="false">
+					<div id="menu"><p:accordionPanel activeIndex="0"
+						autoHeight="false">
 						<p:tab title="业务受理">
 							<p:tree value="#{menuTreeBean.root}" var="node">
 								<p:treeNode>
@@ -42,7 +44,7 @@
 						<p:tab title="财务管理">
 							<p:tree value="#{menuTreeBean.root}" var="node">
 								<p:treeNode>
-									<h:outputLink value="#{node.name}"></h:outputLink>
+									<h:outputLink value="#{request.contextPath}+'/'+#{node.name}"></h:outputLink>
 								</p:treeNode>
 							</p:tree>
 						</p:tab>
@@ -78,7 +80,7 @@
 								</p:submenu>
 							</p:menu>
 						</p:tab>
-					</p:accordionPanel>
+					</p:accordionPanel></div>
 				</h:form>
 			</p:layoutUnit>
 			<p:layoutUnit position="center">

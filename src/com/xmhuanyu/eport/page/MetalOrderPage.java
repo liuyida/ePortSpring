@@ -14,7 +14,7 @@ import com.xmhuanyu.eport.entity.OrderInfo;
 import com.xmhuanyu.eport.third.DB.CIQ.DeclInfo;
 
 /**
- * 
+ * @category 旧航材业务受理页面
  * @author Huanyu
  */
 
@@ -26,7 +26,8 @@ public class MetalOrderPage extends Page {
 		DeclInfo declInfo = (DeclInfo) FacesContext.getCurrentInstance()
 				.getExternalContext().getSessionMap().get("declInfo");
 		orderInfo = new OrderInfo();
-		orderInfo.setBno(declInfo.getDeclNO());
+		if (declInfo != null)
+			orderInfo.setBno(declInfo.getDeclNO());
 
 	}
 
@@ -53,13 +54,13 @@ public class MetalOrderPage extends Page {
 	}
 
 	public void calculateFee(ActionEvent ae) {
-		logger.info("计算旧航材检疫处理费用");		
+		logger.info("计算旧航材检疫处理费用");
 		orderInfo.setValueRMB(orderInfo.getValueUS() * 2);
 		orderInfo.setCash(orderInfo.getValueUS() * 0.2);
 
 	}
-	
-	public void saveOrder(ActionEvent ae){
+
+	public void saveOrder(ActionEvent ae) {
 		logger.info("");
 	}
 
