@@ -5,29 +5,30 @@
 	xmlns:p="http://primefaces.prime.com.tr/ui"
 	template="/templates/ui.xhtml">
 	<ui:define name="content">
-		<h:outputScript name="jsf.js" library="javax.faces" />
-		<p:commandButton value="添加汇率" onclick="addRateDlg.show();"
-			type="button" />
-		<p:dialog id="rateDlg" widgetVar="addRateDlg" header="添加汇率">
-			<h:form id="addRateFrm">
-				<h:panelGrid>
-					<h:outputText for="date" value="日期" />
-					<p:calendar id="date" value="#{bankRatePage.selectBankRate.date}"
-						showButtonPanel="true" />
-					<h:outputText for="rate" value="汇率" />
-					<h:inputText id="rate" value="#{bankRatePage.selectBankRate.rate}">
-						<f:convertNumber maxFractionDigits="3" maxIntegerDigits="1"
-							groupingUsed="true" type="currency" />
-					</h:inputText>
-					<f:facet name="footer">
-						<p:commandButton value="添加" update=":rateTable"							
-							actionListener="#{bankRatePage.addRate}" />
-					</f:facet>
-				</h:panelGrid>
-			</h:form>
-		</p:dialog>
-
 		<h:form id="listFrm">
+			<h:outputScript name="jsf.js" library="javax.faces" />
+			<p:commandButton value="添加汇率" onclick="addRateDlg.show();"
+				type="button" />
+			<p:dialog id="rateDlg" widgetVar="addRateDlg" header="添加汇率">
+				<h:form id="addRateFrm">
+					<h:panelGrid>
+						<h:outputText for="date" value="日期" />
+						<p:calendar id="date" value="#{bankRatePage.selectBankRate.date}"
+							showButtonPanel="true" />
+						<h:outputText for="rate" value="汇率" />
+						<h:inputText id="rate" value="#{bankRatePage.selectBankRate.rate}">
+							<f:convertNumber maxFractionDigits="3" maxIntegerDigits="1"
+								groupingUsed="true" type="currency" />
+						</h:inputText>
+						<f:facet name="footer">
+							<p:commandButton value="添加" update=":rateTable"
+								actionListener="#{bankRatePage.addRate}" />
+						</f:facet>
+					</h:panelGrid>
+				</h:form>
+			</p:dialog>
+
+
 			<p:dataTable widgetVar="rateTable" id="rateTable" var="bankRate"
 				value="#{bankRatePage.lazyModel}" paginator="true" rows="10"
 				lazy="true"
