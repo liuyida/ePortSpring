@@ -3,7 +3,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.prime.com.tr/ui"
-	template="/templates/ui.xhtml">
+	template="/templates/content.xhtml">
 	<ui:define name="content">
 		<h:outputScript name="jsf.js" library="javax.faces" />
 
@@ -37,7 +37,9 @@
 				onRowSelectUpdate="display">
 				<f:facet name="header">显示银行汇率数据</f:facet>
 				<p:column headerText="日期" style="width:250px;">
-					<h:outputText value="#{bankRate.date}" />
+					<h:outputText value="#{bankRate.date}" >
+					<f:convertDateTime pattern="yyyy年MM月dd日"/>
+					</h:outputText>
 				</p:column>
 				<p:column headerText="汇率" style="width:100px;">
 					<h:outputText value="#{bankRate.rate}" />

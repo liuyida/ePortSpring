@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/templates/content.xhtml">
+	<ui:define name="content">
+		<h:form>
+			<h:outputLabel for="declNO" value="业务号" />
+			<h:inputText id="declNO"></h:inputText>
+
+			<h:panelGrid columns="3">
+				<h:commandButton id="metalOrderBtn" value="旧航材业务受理"
+					action="#{indexPage.switchToMetalOrder}">
+				</h:commandButton>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>

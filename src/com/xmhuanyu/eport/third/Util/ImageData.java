@@ -14,6 +14,7 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 
 /**
+ * @category 验证码
  * @author 刘毅达
  * 
  */
@@ -26,6 +27,7 @@ public class ImageData  {
 	Font textFont = new Font("Comic Sans ms", Font.PLAIN, 18);
 	String str = "0,a,2,x,e,5,j,7,l,9,1,b,c,d,4,f,g,h,i,6,k,8,m,n,o,p,q,r,s,t,u,v,w,3,y,z";
 	Random random = new Random();
+
 
 	public void paint(OutputStream out, Object data) throws IOException {
 		if (data instanceof ImageData) {
@@ -47,8 +49,9 @@ public class ImageData  {
 				graphics.drawLine(x, y, x + xl, y + yl);
 			}
 			// 绘制验证码
-			graphics.setColor(drawColor);
-			String code = "";
+			graphics.setColor(drawColor);			
+			
+			String code=" ";			
 			String[] array = str.split(",");
 			for (int i = 0; i < 4; i++) {
 				String rand = array[random.nextInt(36)];

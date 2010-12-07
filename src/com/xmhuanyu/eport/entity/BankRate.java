@@ -11,9 +11,7 @@ import java.util.Date;
  * @author Huanyu
  * 
  */
-public class BankRate implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+public class BankRate implements Serializable {	
 	private Integer seqno;
 	private Date date;
 	private double rate;	

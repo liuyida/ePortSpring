@@ -8,9 +8,8 @@ import java.util.Date;
  * @author Huanyu  
  * @
  */
-public class OrderInfo implements Serializable{
-
-	private static final long serialVersionUID = 1L;
+public class OrderInfo implements Serializable{	
+	private Integer seqno;
 	private String bno;
     private String declNo;
     private Date acceptDate;//受理日期
@@ -26,6 +25,14 @@ public class OrderInfo implements Serializable{
     private String placeName;//货物停放地点
     private String declAttr;//报检属性 T-法检，F-非法检，C-现场查验，W-客户委托，O-其他
     private double cash;//应收金额
+    
+    public Integer getSeqno() {
+		return seqno;
+	}
+
+	public void setSeqno(Integer seqno) {
+		this.seqno = seqno;
+	}
 
     public Date getAcceptDate() {
         return acceptDate;

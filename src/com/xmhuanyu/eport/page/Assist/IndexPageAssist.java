@@ -1,4 +1,4 @@
-package com.xmhuanyu.eport.page.Services;
+package com.xmhuanyu.eport.page.Assist;
 
 import com.xmhuanyu.eport.third.DB.CIQ.CIQDAO;
 import com.xmhuanyu.eport.third.DB.CIQ.DeclInfo;
@@ -7,11 +7,18 @@ import com.xmhuanyu.eport.third.DB.CIQ.DeclInfo;
  * @category author Huanyu
  * 
  */
-public class IndexPageServices {
+public class IndexPageAssist {
 	
 	public DeclInfo getDeclInfoByDeclNO(String declNO) {
+		DeclInfo declInfo = null;
 		CIQDAO ciqdao = new CIQDAO();
-		DeclInfo declInfo = ciqdao.getDeclInfo(declNO);
+		if (ciqdao.isConn())
+			declInfo = ciqdao.getDeclInfo(declNO);
+		else {
+			declInfo = new DeclInfo();
+			declInfo.setDeclNO(declNO);
+		}
+
 		return declInfo;
 	}
 	

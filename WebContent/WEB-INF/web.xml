@@ -5,24 +5,27 @@
 	id="WebApp_ID" version="3.0">
 	<display-name>ePortSpring</display-name>
 	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.htm</welcome-file>
 		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>default.html</welcome-file>
-		<welcome-file>default.htm</welcome-file>
-		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
 	<context-param>
 		<param-name>com.sun.faces.allowTextChildren</param-name>
 		<param-value>true</param-value>
 	</context-param>
 	<context-param>
-		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
-		<param-value>server</param-value>
-	</context-param>
-	<context-param>
 		<param-name>com.sun.faces.expressionFactory</param-name>
 		<param-value>com.sun.el.ExpressionFactoryImpl</param-value>
+	</context-param>
+	<!-- Spring Activation -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>
+			org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/spring-config.xml</param-value>
 	</context-param>
 	<servlet>
 		<servlet-name>Resource Servlet</servlet-name>
@@ -42,8 +45,23 @@
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>/faces/*</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.faces</url-pattern>
+	</servlet-mapping>
 	<error-page>
 		<exception-type>javax.faces.application.ViewExpiredException</exception-type>
 		<location>/pages/home.xhtml</location>
 	</error-page>
+	<jsp-config>
+		<jsp-property-group>
+			<display-name>JSPConfiguration</display-name>
+			<url-pattern>*.html</url-pattern>
+			<el-ignored>true</el-ignored>
+			<page-encoding>UTF-8</page-encoding>
+			<scripting-invalid>false</scripting-invalid>
+			<include-prelude></include-prelude>
+			<include-coda></include-coda>
+		</jsp-property-group>
+	</jsp-config>
 </web-app>

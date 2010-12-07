@@ -1,0 +1,1 @@
+insert into sysuser(LOGINNAME,LOGINPWD,USERNAME,LASTLOGINTIME,VALID) values('admin','admin','系统超级管理员','2010-12-07 11:42:21',1)

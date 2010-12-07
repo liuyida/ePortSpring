@@ -2,6 +2,8 @@ package com.xmhuanyu.eport.services;
 
 
 
+import javax.inject.Named;
+
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
@@ -12,6 +14,7 @@ import com.xmhuanyu.eport.entity.SysUser;
  * @author EDA
  *
  */
+@Named("userServices")
 public class SysUserServices extends InjectSessionFactory{
 	public void addSysUser(SysUser sysUser){			
 		Session session=getSession();

@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2010-12-5 18:44:03 by Hibernate Tools 3.4.0.Beta1 -->
+<hibernate-mapping>
+    <class name="com.xmhuanyu.eport.entity.OrderInfo" table="ORDERINFO">
+        <id name="seqno" type="java.lang.Integer">
+            <column name="SEQNO" />
+            <generator class="assigned" />
+        </id>
+        <property name="bno" type="java.lang.String">
+            <column name="BNO" />
+        </property>
+        <property name="declNo" type="java.lang.String">
+            <column name="DECLNO" />
+        </property>
+        <property name="acceptDate" type="java.util.Date">
+            <column name="ACCEPTDATE" />
+        </property>
+        <property name="acceptTime" type="java.util.Date">
+            <column name="ACCEPTTIME" />
+        </property>
+        <property name="consignor" type="java.lang.String">
+            <column name="CONSIGNOR" />
+        </property>
+        <property name="declUnit" type="java.lang.String">
+            <column name="DECLUNIT" />
+        </property>
+        <property name="goodsName" type="java.lang.String">
+            <column name="GOODSNAME" />
+        </property>
+        <property name="valueRMB" type="double">
+            <column name="VALUERMB" />
+        </property>
+        <property name="valueUS" type="double">
+            <column name="VALUEUS" />
+        </property>
+        <property name="exchangeRate" type="double">
+            <column name="EXCHANGERATE" />
+        </property>
+        <property name="tradeRegions" type="java.lang.String">
+            <column name="TRADEREGIONS" />
+        </property>
+        <property name="stopsPort" type="java.lang.String">
+            <column name="STOPSPORT" />
+        </property>
+        <property name="placeName" type="java.lang.String">
+            <column name="PLACENAME" />
+        </property>
+        <property name="declAttr" type="java.lang.String">
+            <column name="DECLATTR" />
+        </property>
+        <property name="cash" type="double">
+            <column name="CASH" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -6,23 +6,32 @@ package com.xmhuanyu.eport.page;
 
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.inject.Named;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Scope;
 
 import com.xmhuanyu.eport.entity.OrderInfo;
+import com.xmhuanyu.eport.page.Assist.MetalOrderPageAssist;
 import com.xmhuanyu.eport.third.DB.CIQ.DeclInfo;
 
 /**
  * @category 旧航材业务受理页面
  * @author Huanyu
  */
-
+@Named("metalOrderPage")
+@Scope("view")
 public class MetalOrderPage extends Page {
 	private final Logger logger = LoggerFactory.getLogger(MetalOrderPage.class);
+	private OrderInfo orderInfo;
+	private MetalOrderPageAssist metalPageAssist;
+	private FacesContext context;
 
 	public MetalOrderPage() {
 		super();
+		metalPageAssist = new MetalOrderPageAssist();
+		context = FacesContext.getCurrentInstance();
 		DeclInfo declInfo = (DeclInfo) FacesContext.getCurrentInstance()
 				.getExternalContext().getSessionMap().get("declInfo");
 		orderInfo = new OrderInfo();
@@ -30,8 +39,6 @@ public class MetalOrderPage extends Page {
 			orderInfo.setBno(declInfo.getDeclNO());
 
 	}
-
-	private OrderInfo orderInfo;
 
 	public OrderInfo getOrderInfo() {
 		if (orderInfo == null)
@@ -55,8 +62,10 @@ public class MetalOrderPage extends Page {
 
 	public void calculateFee(ActionEvent ae) {
 		logger.info("计算旧航材检疫处理费用");
-		orderInfo.setValueRMB(orderInfo.getValueUS() * 2);
-		orderInfo.setCash(orderInfo.getValueUS() * 0.2);
+		orderInfo.setValueRMB(metalPageAssist.calculateValueRMB(context,
+				orderInfo.getValueUS()));
+		orderInfo.setCash(metalPageAssist.calculateFee(context,
+				orderInfo.getValueRMB()));
 
 	}
 

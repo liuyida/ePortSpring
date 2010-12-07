@@ -24,7 +24,7 @@ import com.xmhuanyu.eport.third.Util.PropertieUtil;
  * 
  */
 public class CIQDAO {
-
+	private boolean isConn=false;
 	private Connection conn;
 	private final Logger logger = LoggerFactory.getLogger(CIQDAO.class);
 
@@ -162,4 +162,13 @@ public class CIQDAO {
 			infos.add(new GoodsInfo(""));
 		return infos;
 	}
+
+	public boolean isConn() {
+		return isConn;
+	}
+
+	public void setConn(boolean isConn) {
+		this.isConn = isConn;
+	}
+	
 }

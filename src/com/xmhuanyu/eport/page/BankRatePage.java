@@ -3,68 +3,40 @@ package com.xmhuanyu.eport.page;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
+import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
+import javax.inject.Named;
 
-import org.primefaces.model.LazyDataModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.xmhuanyu.eport.entity.BankRate;
 
-public class BankRatePage {
+/**
+ * @category 获取银行汇率数据
+ * @author Huanyu
+ * 
+ */
+@Named("bankRatePage")
+@ViewScoped
+public class BankRatePage extends ListPage<BankRate>{
 	private final Logger logger = LoggerFactory.getLogger(BankRatePage.class);
-	private LazyDataModel<BankRate> lazyModel;
-	private BankRate selectBankRate;
 	private BankRate bankRate;
-
-	@SuppressWarnings("serial")
-	public BankRatePage() {
-		lazyModel = new LazyDataModel<BankRate>() {						
-
-			@Override
-			public List<BankRate> load(int first, int pageSize,
-					String sortField, boolean sortOrder,
-					Map<String, String> filters) {
-				logger.info("加载汇率数据{}-{}", new Object[] { first,
-						(first + pageSize) });
-				List<BankRate> lazyBankRates = new ArrayList<BankRate>();
-				populateBankRate(lazyBankRates, first, pageSize);
-				return lazyBankRates;
-			}
-		};
-		// 设置最大数据记录
-		lazyModel.setRowCount(1000);
+	private BankRate selectBankRate;
+	
+	public BankRatePage() {		
+		getLazyModel().setRowCount(100000000);  
 	}
 
-	/**
-	 * @category 查询分页数据
-	 * @param lazyBankRates
-	 * @param pageSize
-	 */
-	protected void populateBankRate(List<BankRate> lazyBankRates, int first,
-			int pageSize) {
+	protected void populateList(List<BankRate> lazyT, int first, int pageSize) {
+		logger.info("加载{}数据{}--{}", new Object[] { this.getClass(), first,
+				pageSize });
 		// TODO 从数据库中加载汇率数据，按日期排列
-		for (int i = 0 + first; i < pageSize+first; i++)
-			lazyBankRates.add(new BankRate(new Date(), i));
-
+		for (int i = 0 + first; i < pageSize + first; i++)
+			lazyT.add(new BankRate(new Date(), i));
 	}
 
-	public LazyDataModel<BankRate> getLazyModel() {
-		return lazyModel;
-	}
-
-	public BankRate getSelectBankRate() {
-		return selectBankRate;
-	}
-
-	public void setSelectBankRate(BankRate selectBankRate) {
-		this.selectBankRate = selectBankRate;
-	}
-	
-	
-	
 	public BankRate getBankRate() {
 		if(bankRate==null) bankRate=new BankRate();
 		return bankRate;
@@ -74,17 +46,25 @@ public class BankRatePage {
 		this.bankRate = bankRate;
 	}
 
-	public void addRate(ActionEvent ae){
-		// TODO  添加汇率数据
+	public void addRate(ActionEvent ae) {
+		// TODO 添加汇率数据
 		logger.info("添加汇率数据！");
 		List<BankRate> lazyBankRates = new ArrayList<BankRate>();
-		populateBankRate(lazyBankRates, 20, 30);
-		lazyModel.setWrappedData(lazyBankRates);
+		populateList(lazyBankRates, 20, 30);
+		getLazyModel().setWrappedData(lazyBankRates);
 	}
-	
-	public void changeRate(ActionEvent ae){
-		// TODO  修改汇率数据
+
+	public void changeRate(ActionEvent ae) {
+		// TODO 修改汇率数据
 		logger.info("修改汇率数据！");
+	}
+
+	public BankRate getSelectBankRate() {
+		return selectBankRate;
+	}
+
+	public void setSelectBankRate(BankRate selectBankRate) {
+		this.selectBankRate = selectBankRate;
 	}
 
 }

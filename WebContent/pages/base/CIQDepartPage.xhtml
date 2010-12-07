@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/templates/content.xhtml">
+	<ui:define name="content">
+		<h:outputScript name="jsf.js" library="javax.faces" />
+		<h:form>
+			<p:commandButton value="添加CIQ部门" onclick="addCIQDepartDialog.show();"
+				type="button" />
+			<p:dataTable widgetVar="ciqDepartTable" id="ciqDepartTable"
+				var="ciqDepart" value="#{ciqDepartPage.lazyModel}" paginator="true"
+				rows="10" lazy="true" style="width:450px;"
+				paginatorTemplate="{RowPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+				rowsPerPageTemplate="5,10,15"
+				selection="#{ciqDepart.selectCIQDepart}" selectionMode="single"
+				onRowSelectComplete="changeCIQDepartDialog.show()"
+				onRowSelectUpdate="display">
+				<f:facet name="header">CIQ部门管理</f:facet>
+				<p:column headerText="部门编号" style="width:250px;">
+					<h:outputText value="#{ciqDepart.ciqId}">
+						<f:convertDateTime pattern="yyyy年MM月dd日" />
+					</h:outputText>
+				</p:column>
+				<p:column headerText="部门名称" style="width:100px;">
+					<h:outputText value="#{ciqDepart.ciqName}" />
+				</p:column>
+				<p:column headerText="是否使用" style="width:40px;">
+					<h:selectBooleanCheckbox value="#{ciqDepart.isused}" />
+				</p:column>
+			</p:dataTable>
+			<p:dialog widgetVar="changeCIQDepartDialog" header="修改CIQ部门"
+				resizable="false" width="200" showEffect="explode"
+				hideEffect="explode">
+				<h:panelGrid id="display" columns="2" cellpadding="4">
+					<h:outputText value="CIQ编号" />
+					<h:outputText value="#{ciqDepartPage.selectCIQDepart.ciqId}" />
+					<h:outputText value="部门名称" />
+					<h:outputText value="#{ciqDepartPage.selectCIQDepart.ciqName}" />
+					<h:outputText value="是否在用" />
+					<h:selectBooleanCheckbox
+						value="#{ciqDepartPage.selectCIQDepart.isused}" />
+					<p:commandButton value="修改" oncomplete="handleCIQDepart(xhr, status, args)" actionListener="#{ciqDepartPage.changeDepartListener}" update="ciqDepartTable"/>
+				</h:panelGrid>
+			</p:dialog>
+			<p:dialog widgetVar="addCIQDepartDialog" header="添加CIQ部门"
+				resizable="false" width="200" showEffect="explode"
+				hideEffect="explode">
+				<h:panelGrid id="display" columns="2" cellpadding="4">
+					<h:outputText value="CIQ编号" />
+					<h:outputText value="#{ciqDepartPage.ciqDepart.ciqId}" />
+					<h:outputText value="部门名称" />
+					<h:outputText value="#{ciqDepartPage.ciqDepart.ciqName}" />
+					<h:outputText value="是否在用" />
+					<h:selectBooleanCheckbox value="#{ciqDepartPage.ciqDepart.isused}" />
+					<p:commandButton value="添加" oncomplete="handleCIQDepart(xhr, status, args)" actionListener="#{ciqDepartPage.addDepartListener}" update="ciqDepartTable"/>
+				</h:panelGrid>
+			</p:dialog>
+		</h:form>
+		<script type="text/javascript">
+			function handleCIQDepart(xhr, status, args) {
+				addCIQDepartDialog.hide();
+				changeCIQDepartDialog.hide();
+			}
+		</script>
+	</ui:define>
+</ui:composition>
+</html>

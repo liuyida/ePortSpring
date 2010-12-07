@@ -3,7 +3,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.prime.com.tr/ui"
-	template="../templates/ui.xhtml">
+	template="/templates/content.xhtml">
 
 	<ui:define name="content">
 		<h:form id="metalOrderForm">
@@ -19,7 +19,6 @@
 						<p:menuitem value="发    票">
 						</p:menuitem>
 					</p:menuButton>
-
 				</p:toolbarGroup>
 			</p:toolbar>
 
@@ -32,9 +31,9 @@
 				<h:inputText value="#{metalOrderPage.orderInfo.consignor}"
 					id="consignor" />
 				<h:outputLabel value="受理日期" for="acceptDate" />
-				<h:inputText id="acceptDate" > 
+				<p:calendar id="acceptDate" showButtonPanel="true">
 				<f:convertDateTime />
-				</h:inputText>
+				</p:calendar>
 				<h:outputLabel value="代理单位" for="declUnit" />
 				<h:inputText value="#{metalOrderPage.orderInfo.declUnit}"
 					id="declUnit" />

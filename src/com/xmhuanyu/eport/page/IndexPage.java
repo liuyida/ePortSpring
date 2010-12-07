@@ -4,7 +4,9 @@
  */
 package com.xmhuanyu.eport.page;
 
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 
 import com.xmhuanyu.eport.third.DB.CIQ.DeclInfo;
 
@@ -12,7 +14,8 @@ import com.xmhuanyu.eport.third.DB.CIQ.DeclInfo;
  * @category 业务受理页面
  * @author Huanyu
  */
-
+@Named("indexPage")
+@RequestScoped
 public class IndexPage extends Page {
 
 	private String declNO;
@@ -31,7 +34,7 @@ public class IndexPage extends Page {
 		DeclInfo declInfo=new DeclInfo();
 		declInfo.setDeclNO("12345");
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("declInfo", declInfo); 
-		return "metalOrderPage";
+		return "/pages/metalOrderPage.xhtml";
 	}
 
 	@Override

@@ -21,72 +21,68 @@
 			<p:layoutUnit styleClass="ui-widget ui-widget-header" position="top"
 				height="85">
 				<div id="logo">
-				<h1>口岸检疫处理业务管理系统</h1>
+					<div align="left">
+						<h1>
+							口岸检疫处理业务管理系统
+						</h1>
+					</div>
+					<div align="right" style="left: 700px;">
+						<ui:include src="/resources/temp/RILI.xhtml" />
+					</div>
 				</div>
+
 			</p:layoutUnit>
 			<p:layoutUnit position="bottom" height="50">
-				<div align="center"><h:outputText value="厦门环宇卫生处理有限公司 版权所有" />
-				<br />
-				<h:outputText value="信息工程部 开发维护" /></div>
+				<div align="center">
+					<h:outputText value="厦门环宇卫生处理有限公司 版权所有" />
+					<br />
+					<h:outputText value="信息工程部 开发维护" />
+				</div>
 			</p:layoutUnit>
 			<p:layoutUnit position="left" width="250" header="菜单栏"
 				resizable="true" closable="true" collapsible="true">
 				<h:form>
-					<div id="menu"><p:accordionPanel activeIndex="0"
-						autoHeight="false">
-						<p:tab title="业务受理">
-							<p:tree value="#{menuTreeBean.root}" var="node">
-								<p:treeNode>
-									<h:outputLink value="#{node.url}">#{node.name}</h:outputLink>
-								</p:treeNode>
-							</p:tree>
-						</p:tab>
-						<p:tab title="财务管理">
-							<p:tree value="#{menuTreeBean.root}" var="node">
-								<p:treeNode>
-									<h:outputLink value="#{request.contextPath}+'/'+#{node.name}"></h:outputLink>
-								</p:treeNode>
-							</p:tree>
-						</p:tab>
-						<p:tab title="业务管理">
-							<p:menu>
-								<p:submenu>
-									<p:menuitem value="卫生处理业务受理" />
-									<p:menuitem value="卫生处理业务受理" />
-								</p:submenu>
-							</p:menu>
-						</p:tab>
-						<p:tab title="统计分析">
-							<p:menu>
-								<p:submenu>
-									<p:menuitem value="卫生处理业务受理" />
-									<p:menuitem value="卫生处理业务受理" />
-								</p:submenu>
-							</p:menu>
-						</p:tab>
-						<p:tab title="基础数据">
-							<p:menu>
-								<p:submenu>
-									<p:menuitem value="卫生处理业务受理" />
-									<p:menuitem value="卫生处理业务受理" />
-								</p:submenu>
-							</p:menu>
-						</p:tab>
-						<p:tab title="系统管理">
-							<p:menu>
-								<p:submenu>
-									<p:menuitem value="卫生处理业务受理" />
-									<p:menuitem value="卫生处理业务受理" />
-								</p:submenu>
-							</p:menu>
-						</p:tab>
-					</p:accordionPanel></div>
+					<div id="menu">
+						<p:accordionPanel activeIndex="0" autoHeight="false">
+							<p:tab title="业务受理">
+								<p:tree value="#{menuTreeBean.root}" var="node">
+									<p:treeNode>
+										<h:link outcome="#{node.url}" value="#{node.name}" />
+									</p:treeNode>
+								</p:tree>
+							</p:tab>
+							<p:tab title="财务管理">
+
+							</p:tab>
+							<p:tab title="业务管理">
+
+							</p:tab>
+							<p:tab title="统计分析">
+								<p:tree value="#{menuTreeBean.queryRoot}" var="node">
+									<p:treeNode>
+										<h:link outcome="#{node.url}" value="#{node.name}" />
+									</p:treeNode>
+								</p:tree>
+							</p:tab>
+							<p:tab title="基础数据">
+								<h:link target="me" outcome="/pages/base/bankRatePage.xhtml">汇率数据修改</h:link>
+							</p:tab>
+							<p:tab title="系统管理">
+
+							</p:tab>
+						</p:accordionPanel>
+					</div>
 				</h:form>
 			</p:layoutUnit>
-			<p:layoutUnit position="center">
-				<div id="content" class="ui-widget">
-				<div class="post"><ui:insert name="content">...</ui:insert></div>
-				</div>
+			<p:layoutUnit position="center" style="height:100%">
+				<iframe id="me" frameborder="0" width="100%" height="100%"
+					style="height: 100%" scrolling="no">
+					<div id="content" class="ui-widget" style="height: 100%">
+						<div class="post">
+							<ui:insert name="content">...</ui:insert>
+						</div>
+					</div>
+				</iframe>
 			</p:layoutUnit>
 		</p:layout>
 	</h:body>

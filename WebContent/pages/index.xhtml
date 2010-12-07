@@ -1,25 +1,80 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.prime.com.tr/ui"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
 <f:view contentType="text/html">
 	<h:head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>业务受理界面</title>
+		<title><ui:insert name="title">口岸检疫处理业务管理系统</ui:insert></title>
+		<meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
+		<link type="text/css" rel="stylesheet"
+			href="#{request.contextPath}/resources/themes/redmond/skin.css" />
+		<link type="text/css" rel="stylesheet"
+			href="#{request.contextPath}/resources/css/default.css" />
+
+		<ui:insert name="head"></ui:insert>
 	</h:head>
-	<h:body>
-		<h:form>
-			<h:outputLabel for="declNO" value="业务号" />
-			<h:inputText id="declNO"></h:inputText>
-			
-			<h:panelGrid columns="3">
-				<h:commandButton  id="metalOrderBtn" value="旧航材业务受理" action="#{indexPage.switchToMetalOrder}">
-				</h:commandButton>
-			</h:panelGrid>
-		</h:form>
+	<h:body style="font-size:12px;">
+		<p:layout fullPage="true">
+			<p:layoutUnit styleClass="ui-widget ui-widget-header" position="top"
+				height="85">
+				<div id="logo">
+				<div align="left">
+				<h1>口岸检疫处理业务管理系统</h1>
+				</div>
+				<div align="right" style="left: 700px;"><ui:include
+					src="/resources/temp/RILI.xhtml" /></div>
+				</div>
+
+			</p:layoutUnit>
+			<p:layoutUnit position="bottom" height="50">
+				<div align="center"><h:outputText value="厦门环宇卫生处理有限公司 版权所有" />
+				<br />
+				<h:outputText value="信息工程部 开发维护" /></div>
+			</p:layoutUnit>
+			<p:layoutUnit position="left" width="250" header="菜单栏"
+				resizable="true" closable="true" collapsible="true">
+				<h:form>
+					<div id="menu"><p:accordionPanel activeIndex="0"
+						autoHeight="false">
+						<p:tab title="业务受理">
+							<p:tree value="#{menuTreeBean.root}" var="node">
+								<p:treeNode>
+									<h:link outcome="#{node.url}" value="#{node.name}" />
+								</p:treeNode>
+							</p:tree>
+						</p:tab>
+						<p:tab title="财务管理">
+
+						</p:tab>
+						<p:tab title="业务管理">
+
+						</p:tab>
+						<p:tab title="统计分析">
+							<p:tree value="#{menuTreeBean.queryRoot}" var="node">
+								<p:treeNode>
+									<h:link outcome="#{node.url}" value="#{node.name}" />
+								</p:treeNode>
+							</p:tree>
+						</p:tab>
+						<p:tab title="基础数据">
+							<h:link target="me" outcome="/pages/base/bankRatePage.xhtml">汇率数据修改</h:link>
+						</p:tab>
+						<p:tab title="系统管理">
+
+						</p:tab>
+					</p:accordionPanel></div>
+				</h:form>
+			</p:layoutUnit>
+			<p:layoutUnit position="center" style="height:100%">
+				<iframe id="me"
+					src="#{request.contextPath}/pages/index/cashIndex.xhtml"
+					frameborder="0" width="100%" height="100%" style="height: 100%"
+					scrolling="no"> </iframe>
+			</p:layoutUnit>
+		</p:layout>
 	</h:body>
 </f:view>
 </html>
