@@ -6,7 +6,7 @@
 	<class name="com.xmhuanyu.eport.entity.CIQDepart" table="CIQDEPART">
 		<id name="seqno" type="java.lang.Integer">
 			<column name="SEQNO" />
-			<generator class="assigned" />
+			<generator class="identity" />
 		</id>
 		<property name="ciqId" type="java.lang.String">
 			<column name="CIQID" />

@@ -17,7 +17,8 @@
 		<ui:insert name="head"></ui:insert>
 	</h:head>
 	<h:body style="font-size:12px;">
-		<p:layout fullPage="true">
+
+		<p:layout id="fullPage" fullPage="true">
 			<p:layoutUnit styleClass="ui-widget ui-widget-header" position="top"
 				height="85">
 				<div id="logo">
@@ -40,11 +41,13 @@
 					<div id="menu"><p:accordionPanel activeIndex="0"
 						autoHeight="false">
 						<p:tab title="业务受理">
-							<p:tree value="#{menuTreeBean.root}" var="node">
+
+							<p:tree id="rootTree" value="#{menuTreeBean.root}" var="node">
 								<p:treeNode>
-									<h:link outcome="#{node.url}" value="#{node.name}" />
+									<h:link target="me" outcome="#{node.url}" value="#{node.name}" />
 								</p:treeNode>
 							</p:tree>
+
 						</p:tab>
 						<p:tab title="财务管理">
 
@@ -53,28 +56,31 @@
 
 						</p:tab>
 						<p:tab title="统计分析">
+
 							<p:tree value="#{menuTreeBean.queryRoot}" var="node">
 								<p:treeNode>
 									<h:link outcome="#{node.url}" value="#{node.name}" />
 								</p:treeNode>
 							</p:tree>
+
 						</p:tab>
 						<p:tab title="基础数据">
 							<h:link target="me" outcome="/pages/base/bankRatePage.xhtml">汇率数据修改</h:link>
 						</p:tab>
 						<p:tab title="系统管理">
-
+							<h:link target="me" outcome="/pages/base/bankRatePage.xhtml">汇率数据修改</h:link>
 						</p:tab>
 					</p:accordionPanel></div>
 				</h:form>
 			</p:layoutUnit>
 			<p:layoutUnit position="center" style="height:100%">
 				<iframe id="me"
-					src="#{request.contextPath}/pages/index/cashIndex.xhtml"
+					src="#{request.contextPath}/pages/index/cashIndex.faces"
 					frameborder="0" width="100%" height="100%" style="height: 100%"
 					scrolling="no"> </iframe>
 			</p:layoutUnit>
 		</p:layout>
+
 	</h:body>
 </f:view>
 </html>

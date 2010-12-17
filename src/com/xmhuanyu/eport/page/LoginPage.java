@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -15,6 +16,7 @@ import org.springframework.context.annotation.Scope;
 
 import com.xmhuanyu.eport.entity.SysUser;
 import com.xmhuanyu.eport.services.SysUserServices;
+import com.xmhuanyu.eport.third.Util.FinalTestPdf;
 
 /**
  * @category 系统登录界面
@@ -80,6 +82,11 @@ public class LoginPage {
 		this.loginPwd = loginPwd;
 	}
 	
+	
+	public void print(ActionEvent ae){
+		FinalTestPdf ps = new FinalTestPdf();
+		ps.print();
+	}
 	
 
 }

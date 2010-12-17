@@ -6,7 +6,7 @@
     <class name="com.xmhuanyu.eport.entity.BankRate" table="BANKRATE">
         <id name="seqno" type="java.lang.Integer">
             <column name="SEQNO" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <property name="date" type="java.util.Date">
             <column name="DATE" />

@@ -3,7 +3,9 @@ package com.xmhuanyu.eport.services;
 import java.util.Date;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
 
 import com.xmhuanyu.eport.entity.BankRate;
 
@@ -12,6 +14,7 @@ import com.xmhuanyu.eport.entity.BankRate;
  * @author Huanyu
  *
  */
+@Repository("bankRateServices")
 public class BankRateServices extends InjectSessionFactory{
 	public BankRate getBankRateByDate(Date date){ 
 		Session session=getSession();
@@ -19,6 +22,13 @@ public class BankRateServices extends InjectSessionFactory{
 	}
 	
 	public void addBankRate(BankRate bankRate){
+		Session session=getSession();
+		Transaction trans = session.beginTransaction();
+		trans.begin();
+		session.persist(bankRate);
+		trans.commit();
+		session.flush();
+		session.close();
 		
 	}
 

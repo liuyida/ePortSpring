@@ -3,6 +3,7 @@ package com.xmhuanyu.eport.page.converter;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
+import javax.faces.convert.FacesConverter;
 
 import com.xmhuanyu.eport.entity.CIQDepart;
 
@@ -11,17 +12,18 @@ import com.xmhuanyu.eport.entity.CIQDepart;
  * @author EDA
  *
  */
+@FacesConverter("CIQConverter")
 public class CIQDepartConverter implements Converter{
-
+   
 	@Override
-	public Object getAsObject(FacesContext arg0, UIComponent arg1, String value) {
+	public Object getAsObject(FacesContext fc, UIComponent ui, String value) {
 		if(value==null||value.trim().length()==0)
-			return value;
+			return new CIQDepart();
 		return null;
 	}
 
 	@Override
-	public String getAsString(FacesContext arg0, UIComponent arg1, Object value) {
+	public String getAsString(FacesContext fc, UIComponent ui, Object value) {
 		CIQDepart ciqDepart=null;
 		if(value instanceof CIQDepart){
 			ciqDepart=(CIQDepart)value;

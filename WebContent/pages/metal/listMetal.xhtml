@@ -1,11 +1,31 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Insert title here</title>
-</head>
-<body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-</body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/templates/content.xhtml">
+	<ui:define name="content">
+		<p:panel header="旧航材业务受理信息查询">
+			<h:panelGrid columns="6">
+				<h:outputText for="bno" value="业务号" />
+				<h:inputText id="bno" value="" />
+				<h:outputText for="declNO" value="报检号" />
+				<h:inputText id="declNO" value="" />
+				<h:outputText for="acceptDate" value="受理日期" />
+				<p:calendar id="acceptDate" showButtonPanel="true"></p:calendar>			
+				<h:outputText for="placeName" value="存放地点" />
+				<h:inputText id="placeName" value="" />
+				<h:outputText for="pciqDepart" value="监管部门" />
+				<h:inputText id="ciqDepart" value="" />
+				<h:outputText for="pciqDepart1" value="监管部门" />
+				<h:inputText id="ciqDepart1" value="" />
+			</h:panelGrid>
+		</p:panel>
+
+	</ui:define>
+</ui:composition>
 </html>

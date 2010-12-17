@@ -70,7 +70,7 @@ public class MenuTreeBean implements Serializable {
 		MenuNode woodGoodNode=new MenuNode("植物产品检疫处理", null);
 		TreeNode woodGoodTreeNode=new DefaultTreeNode(woodGoodNode,goodTreeNode);
 		MenuNode metalNode = new MenuNode("旧航材检疫处理",
-				"/pages/metalOrderPage.xhtml");
+				"/pages/metal/listMetal.xhtml");
 		TreeNode metalTreeNode = new DefaultTreeNode(metalNode, goodTreeNode);
 		// 外包装检疫处理
 		MenuNode packNode = new MenuNode("外包装检疫处理", null);

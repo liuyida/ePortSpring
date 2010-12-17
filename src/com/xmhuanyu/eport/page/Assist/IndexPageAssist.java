@@ -11,10 +11,10 @@ public class IndexPageAssist {
 	
 	public DeclInfo getDeclInfoByDeclNO(String declNO) {
 		DeclInfo declInfo = null;
-		CIQDAO ciqdao = new CIQDAO();
+		CIQDAO ciqdao = new CIQDAO();	
 		if (ciqdao.isConn())
 			declInfo = ciqdao.getDeclInfo(declNO);
-		else {
+		else {			
 			declInfo = new DeclInfo();
 			declInfo.setDeclNO(declNO);
 		}

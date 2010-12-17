@@ -11,17 +11,20 @@
 		<title>口岸检疫处理业务管理系统</title>
 	</h:head>
 	<h:body>
-	   
-	    <p:messages id="msg"  showDetail="false"/>       
-	  
-		<h:form prependId="false">
+
+		<p:messages id="msg" showDetail="false" />
+
+		<h:form id="loginForm" prependId="false">
 			<h:panelGrid>
 				<h:outputText for="userName" value="用户名" />
-				<h:inputText id="userName"  required="true" label="用户名" value="#{loginPage.loginName}"/>
+				<h:inputText id="userName" required="true" label="用户名"
+					value="#{loginPage.loginName}" />
 				<h:outputText for="password" value="密码" />
-				<h:inputText id="password" required="true" label="密码" value="#{loginPage.loginPwd}"/>
+				<h:inputText id="password" required="true" label="密码"
+					value="#{loginPage.loginPwd}" />
 			</h:panelGrid>
-			<p:commandButton value="登录" update="msg" required="true" action="#{loginPage.login}" ></p:commandButton>			
+			<h:commandButton id="loginBtn" value="登录" update="msg"
+				required="true" action="#{loginPage.login1}"></h:commandButton>
 		</h:form>
 	</h:body>
 </f:view>

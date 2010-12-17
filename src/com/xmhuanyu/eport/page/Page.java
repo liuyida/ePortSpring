@@ -47,7 +47,5 @@ public abstract class Page {
         this.saveBtn = saveBtn;
     }
 
-    public abstract String acculateFee();
 
-    public abstract String saveOrder();
 }

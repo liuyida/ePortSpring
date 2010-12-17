@@ -4,6 +4,8 @@
  */
 package com.xmhuanyu.eport.page;
 
+import java.io.Serializable;
+
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Named;
@@ -22,7 +24,7 @@ import com.xmhuanyu.eport.third.DB.CIQ.DeclInfo;
  */
 @Named("metalOrderPage")
 @Scope("view")
-public class MetalOrderPage extends Page {
+public class MetalOrderPage extends Page implements Serializable{
 	private final Logger logger = LoggerFactory.getLogger(MetalOrderPage.class);
 	private OrderInfo orderInfo;
 	private MetalOrderPageAssist metalPageAssist;
@@ -36,7 +38,14 @@ public class MetalOrderPage extends Page {
 				.getExternalContext().getSessionMap().get("declInfo");
 		orderInfo = new OrderInfo();
 		if (declInfo != null)
-			orderInfo.setBno(declInfo.getDeclNO());
+		{
+			orderInfo.setDeclNo(declInfo.getDeclNO());
+			orderInfo.setConsignor(declInfo.getConsignorName());
+			orderInfo.setGoodsName(declInfo.getGoodsName());
+			orderInfo.setPlaceName(declInfo.getGoodPlace());
+			orderInfo.setTradeRegions(declInfo.getEntName());
+			
+		}
 
 	}
 
@@ -50,16 +59,6 @@ public class MetalOrderPage extends Page {
 		this.orderInfo = orderInfo;
 	}
 
-	@Override
-	public String acculateFee() {
-		throw new UnsupportedOperationException("Not supported yet.");
-	}
-
-	@Override
-	public String saveOrder() {
-		throw new UnsupportedOperationException("Not supported yet.");
-	}
-
 	public void calculateFee(ActionEvent ae) {
 		logger.info("计算旧航材检疫处理费用");
 		orderInfo.setValueRMB(metalPageAssist.calculateValueRMB(context,
@@ -70,7 +69,7 @@ public class MetalOrderPage extends Page {
 	}
 
 	public void saveOrder(ActionEvent ae) {
-		logger.info("");
+		logger.info("业务保存");
 	}
 
 }

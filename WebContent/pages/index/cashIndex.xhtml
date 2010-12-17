@@ -9,8 +9,8 @@
 <ui:composition template="/templates/content.xhtml">
 	<ui:define name="content">
 		<h:form>
-			<h:outputLabel for="declNO" value="业务号" />
-			<h:inputText id="declNO"></h:inputText>
+			<h:outputLabel for="declNO" value="报检号" />
+			<h:inputText id="declNO" value="#{indexPage.declNO}"></h:inputText>
 
 			<h:panelGrid columns="3">
 				<h:commandButton id="metalOrderBtn" value="旧航材业务受理"

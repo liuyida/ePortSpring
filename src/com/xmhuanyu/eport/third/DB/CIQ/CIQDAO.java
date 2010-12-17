@@ -35,10 +35,14 @@ public class CIQDAO {
 			DriverManager.setLoginTimeout(1);
 			conn = DriverManager.getConnection(prop.getProperty("oracle.url"), prop
 					.getProperty("oracle.user"), prop.getProperty("oracle.pwd"));
+			logger.info(String.valueOf(isConn));
+			isConn=true;
 		} catch (ClassNotFoundException e) {
 			logger.error("DriverClass 设置失败！");
+			isConn=false;
 			e.printStackTrace();
 		} catch (SQLException e) {
+			isConn=false;
 			logger.error("数据库连接建立失败!");
 			e.printStackTrace();
 		}

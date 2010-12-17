@@ -8,6 +8,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
+import com.xmhuanyu.eport.page.Assist.IndexPageAssist;
 import com.xmhuanyu.eport.third.DB.CIQ.DeclInfo;
 
 /**
@@ -29,21 +30,14 @@ public class IndexPage extends Page {
 	}
 
 	public String switchToMetalOrder() {
-		//IndexPageServices services=new IndexPageServices();
-		//DeclInfo declInfo= services.getDeclInfoByDeclNO(declNO);
-		DeclInfo declInfo=new DeclInfo();
-		declInfo.setDeclNO("12345");
-		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("declInfo", declInfo); 
+
+		DeclInfo declInfo = new DeclInfo();
+		//declInfo.setDeclNO("12345");
+		IndexPageAssist indexPageAssist = new IndexPageAssist();		
+		declInfo = indexPageAssist.getDeclInfoByDeclNO(declNO);
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap()
+				.put("declInfo", declInfo);
 		return "/pages/metalOrderPage.xhtml";
 	}
 
-	@Override
-	public String acculateFee() {
-		throw new UnsupportedOperationException("Not supported yet.");
-	}
-
-	@Override
-	public String saveOrder() {
-		throw new UnsupportedOperationException("Not supported yet.");
-	}
 }
