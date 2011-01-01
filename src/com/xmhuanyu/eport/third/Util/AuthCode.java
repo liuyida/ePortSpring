@@ -1,5 +1,24 @@
-public class ImageData implements Serializable {
+package com.xmhuanyu.eport.third.Util;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.Serializable;
+import java.util.Random;
+
+import javax.faces.context.FacesContext;
+import javax.imageio.ImageIO;
+import javax.servlet.http.HttpSession;
+
+/**
+ * @category 验证码生成机制
+ * @author EDA
+ *
+ */
+public class AuthCode implements Serializable{
 	private static final long serialVersionUID = -8161565799237268271L;
 	private BufferedImage image;
 	Integer width = 60;
